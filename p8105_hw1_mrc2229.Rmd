@@ -1,0 +1,27 @@
+---
+title: "p8105_hw1_mrc2229.rmd"
+output: github_document
+---
+
+
+
+#create data frame for problem 1
+
+```{r HW1 Problem1}
+library(tidyverse)
+
+set.seed(2)
+
+p8105_hw1_df = tibble(
+  random_var = rnorm(8),
+  vec_logical = c(random_var>0),
+  vec_char = c("A","character","variable","that","is", "eight","in", "length"),
+  vec_factor = factor(c("Low","Low","Low", "Med","Med","High", "High","High"))
+)
+```
+
+#Taking the mean of the sample
+
+```{r}
+mean(random_var)
+```
