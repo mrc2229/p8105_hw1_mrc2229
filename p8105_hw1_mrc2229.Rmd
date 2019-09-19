@@ -5,7 +5,7 @@ output: github_document
 
 
 
-#create data frame for problem 1
+# Creating the data frame for problem 1
 
 ```{r HW1 Problem1}
 library(tidyverse)
@@ -13,15 +13,23 @@ library(tidyverse)
 set.seed(2)
 
 p8105_hw1_df = tibble(
-  random_var = rnorm(8),
-  vec_logical = c(random_var>0),
-  vec_char = c("A","character","variable","that","is", "eight","in", "length"),
-  vec_factor = factor(c("Low","Low","Low", "Med","Med","High", "High","High"))
+  h1p1_random_var = rnorm(8),
+  h1p1_vec_logical = c(h1p1_random_var>0),
+  h1p1_vec_char = c("A","character","variable","that","is", "eight","in", "length"),
+  h1p1_vec_factor = factor(c("Low","Low","Low", "Med","Med","High", "High","High"))
 )
 ```
 
-#Taking the mean of the sample
+# Taking the mean of the sample for each variable
 
-```{r}
-mean(random_var)
-```
+* The mean of the sample is `r mean(pull(p8105_hw1_df, h1p1_random_var))` 
+I was able to take the mean of this variable because it is a set of numbers.
+
+* The mean of the sample is `r mean(pull(p8105_hw1_df, h1p1_vec_logical))` 
+I was able to take the mean of this variable because the logical vector only corresponds to true or false, which is coded as zeros and ones.
+
+* The mean of the sample is `r mean(pull(p8105_hw1_df, h1p1_vec_char))` 
+I was not able to take the mean of this variable because it is only characters and no numbers. 
+
+* The mean of the sample is `r mean(pull(p8105_hw1_df, h1p1_vec_factor))`
+I was not able to take the mean of this variable because it currently contains no numbers. 
