@@ -15,7 +15,7 @@ library(tidyverse)
 ```{r HW1 Problem1}
 set.seed(2)
 
-p8105_hw1_df = tibble(
+p8105_hw1p1_df = tibble(
   h1p1_random_var = rnorm(8),
   h1p1_vec_logical = c(h1p1_random_var>0),
   h1p1_vec_char = c("A","character","variable","that","is", "eight","in", "length"),
@@ -25,19 +25,19 @@ p8105_hw1_df = tibble(
 
 ## Taking the mean of the sample for each variable
 
-* The mean of the sample for the random variable is `r mean(pull(p8105_hw1_df, h1p1_random_var))` I was able to take the mean of this variable because it is a set of numbers.
+* The mean of the sample for the random variable is `r mean(pull(p8105_hw1p1_df, h1p1_random_var))` I was able to take the mean of this variable because it is a set of numbers.
 
-* The mean of the sample for the logical vector is `r mean(pull(p8105_hw1_df, h1p1_vec_logical))` I was able to take the mean of this variable because the logical vector only corresponds to true or false, which is coded as zeros and ones.
+* The mean of the sample for the logical vector is `r mean(pull(p8105_hw1p1_df, h1p1_vec_logical))` I was able to take the mean of this variable because the logical vector only corresponds to true or false, which is coded as zeros and ones.
 
-* The mean of the sample for the character vector is `r mean(pull(p8105_hw1_df, h1p1_vec_char))` I was not able to take the mean of this variable because it is only characters and no numbers. 
+* The mean of the sample for the character vector is `r mean(pull(p8105_hw1p1_df, h1p1_vec_char))` I was not able to take the mean of this variable because it is only characters and no numbers. 
 
-* The mean of the sample for the factor vector is `r mean(pull(p8105_hw1_df, h1p1_vec_factor))` I was not able to take the mean of this variable because it currently contains no numbers. 
+* The mean of the sample for the factor vector is `r mean(pull(p8105_hw1p1_df, h1p1_vec_factor))` I was not able to take the mean of this variable because it currently contains no numbers. 
 
 ## Convert character, logical, and factor variables to numeric variables.
 ```{r}
-  as.numeric(pull(p8105_hw1_df, h1p1_vec_logical))
-  as.numeric(pull(p8105_hw1_df, h1p1_vec_char)) 
-  as.numeric(pull(p8105_hw1_df, h1p1_vec_factor))
+  as.numeric(pull(p8105_hw1p1_df, h1p1_vec_logical))
+  as.numeric(pull(p8105_hw1p1_df, h1p1_vec_char)) 
+  as.numeric(pull(p8105_hw1p1_df, h1p1_vec_factor))
 ```
 
 The logical vector variable was able to convert to numeric because true and false were converted to ones and zeros. This is also why we could take the mean of the logical variable.
@@ -48,9 +48,9 @@ The factor vector variable was able to convert to numeric because the three leve
 
 ## Converting the logical vectors and multiplying by the random variable.
 ```{r}
-  as.numeric(pull(p8105_hw1_df, h1p1_vec_logical))*(pull(p8105_hw1_df, h1p1_random_var))
-  as.factor(pull(p8105_hw1_df, h1p1_vec_logical))*(pull(p8105_hw1_df, h1p1_random_var))
-  as.numeric(as.factor(pull(p8105_hw1_df, h1p1_vec_logical)))*(pull(p8105_hw1_df, h1p1_random_var))
+  as.numeric(pull(p8105_hw1p1_df, h1p1_vec_logical))*(pull(p8105_hw1p1_df, h1p1_random_var))
+  as.factor(pull(p8105_hw1p1_df, h1p1_vec_logical))*(pull(p8105_hw1p1_df, h1p1_random_var))
+  as.numeric(as.factor(pull(p8105_hw1p1_df, h1p1_vec_logical)))*(pull(p8105_hw1p1_df, h1p1_random_var))
 ```
 
 * I was able to multiply the converted logical vectors by the random sample when I converted it to a numeric or to a factor then a numeric, as the end result was the logical vector becoming numeric. 
