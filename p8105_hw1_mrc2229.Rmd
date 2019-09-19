@@ -1,15 +1,18 @@
 ---
 title: "p8105_hw1_mrc2229.rmd"
+author: Matthew Curran
+date: 2019-09-19
 output: github_document
 ---
+```{r}
+library(tidyverse)
+```
 
 # Problem 1
 
 ## Creating the data frame for problem 1
 
 ```{r HW1 Problem1}
-library(tidyverse)
-
 set.seed(2)
 
 p8105_hw1_df = tibble(
@@ -22,13 +25,13 @@ p8105_hw1_df = tibble(
 
 ## Taking the mean of the sample for each variable
 
-* The mean of the sample is `r mean(pull(p8105_hw1_df, h1p1_random_var))` I was able to take the mean of this variable because it is a set of numbers.
+* The mean of the sample for the random variable is `r mean(pull(p8105_hw1_df, h1p1_random_var))` I was able to take the mean of this variable because it is a set of numbers.
 
-* The mean of the sample is `r mean(pull(p8105_hw1_df, h1p1_vec_logical))` I was able to take the mean of this variable because the logical vector only corresponds to true or false, which is coded as zeros and ones.
+* The mean of the sample for the logical vector is `r mean(pull(p8105_hw1_df, h1p1_vec_logical))` I was able to take the mean of this variable because the logical vector only corresponds to true or false, which is coded as zeros and ones.
 
-* The mean of the sample is `r mean(pull(p8105_hw1_df, h1p1_vec_char))` I was not able to take the mean of this variable because it is only characters and no numbers. 
+* The mean of the sample for the character vector is `r mean(pull(p8105_hw1_df, h1p1_vec_char))` I was not able to take the mean of this variable because it is only characters and no numbers. 
 
-* The mean of the sample is `r mean(pull(p8105_hw1_df, h1p1_vec_factor))`I was not able to take the mean of this variable because it currently contains no numbers. 
+* The mean of the sample for the factor vector is `r mean(pull(p8105_hw1_df, h1p1_vec_factor))` I was not able to take the mean of this variable because it currently contains no numbers. 
 
 ## Convert character, logical, and factor variables to numeric variables.
 ```{r}
@@ -77,3 +80,25 @@ p8105_hw1p2_df = tibble(
 * the median of x is `r median(pull(p8105_hw1p2_df, x))`
 * the standard deviation of x is `r sd(pull(p8105_hw1p2_df, x))`
 * the proportion of cases for which x + y > 1 is `r mean(pull(p8105_hw1p2_df, h1p2_vec_num))`
+
+## Create Scatterplots
+
+```{r}
+Scatplot_logic = ggplot(p8105_hw1p2_df, aes(x = x, y = y, color = h1p2_vec_logical)) + geom_point()
+
+Scatplot_logic
+
+Scatplot_num = ggplot(p8105_hw1p2_df, aes(x = x, y = y, color = h1p2_vec_num)) + geom_point()
+
+Scatplot_num
+
+Scatplot_factor = ggplot(p8105_hw1p2_df, aes(x = x, y = y, color = h1p2_vec_factor)) + geom_point()
+
+Scatplot_factor
+
+ggsave("Scatplot_logic.pdf")
+```
+
+* The scatterplots for the logical vector and the factor variables are the same, where when x + y > 1 is true the point is a teal color and a pink color when false. 
+
+* The scatterplots for the numeric vector variables are on a color gradiant. The numbers are on a scale from 0 to 1 where 0 is a very dark blue and 1 is a very light blue. Values in between would be different shades of blue. In this case however the only outcomes are either 1, which is false, or 0, which is true. So the only colors on the plot are very dark blue and light blue.
