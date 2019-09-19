@@ -55,8 +55,10 @@ The factor vector variable was able to convert to numeric because the three leve
 * However when I turned the logical variable into a factor I was not able to multiply it by the random sample because it was not a number being multiplied by a number.
 
 # Problem 2
+
+## Create new dataframe for problem 2
+
 ```{r HW1 Problem2}
-library(tidyverse)
 
 set.seed(2)
 p8105_hw1p2_df = tibble(
@@ -67,3 +69,11 @@ p8105_hw1p2_df = tibble(
   h1p2_vec_factor = as.factor(h1p2_vec_logical),
 )
 ```
+
+## Getting information on the dataset, x, and proportions for the logical vector.
+
+* the size of the dataset is `r nrow(p8105_hw1p2_df)` rows by `r ncol(p8105_hw1p2_df)` columns
+* the mean of x is `r mean(pull(p8105_hw1p2_df, x))`
+* the median of x is `r median(pull(p8105_hw1p2_df, x))`
+* the standard deviation of x is `r sd(pull(p8105_hw1p2_df, x))`
+* the proportion of cases for which x + y > 1 is `r mean(pull(p8105_hw1p2_df, h1p2_vec_num))`
